@@ -31,21 +31,18 @@ export const Counter = () => {
           Decrement
         </button>
         <input
-          // className={styles.textbox}
           aria-label="Set increment amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
         <button
           className="bg-green-400 text-white px-3 py-2 rounded shadow"
-          // onClick={() => dispatch(Number(incrementByAmount(amount)) || 0)}
           onClick={() => dispatch(incrementByAmount(Number(amount) || 0))}
         >
           IncrementByAmount
         </button>
         <button
           className="bg-orange-400 text-white px-3 py-2 rounded shadow"
-          // onClick={() => dispatch(Number(decrementByAmount(amount)) || 0)}
           onClick={() => dispatch(decrementByAmount(Number(amount) || 0))}
         >
           DecrementByAmount
