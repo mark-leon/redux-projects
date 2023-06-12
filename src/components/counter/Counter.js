@@ -1,21 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment, reset } from "../../redux/counter/action";
+import {
+  selectCount,
+  decrement,
+  increment,
+  reset,
+} from "../../rtk/counter/counterSlice";
 
 export const Counter = () => {
-  const count = useSelector((state) => state.value);
+  const count = useSelector(selectCount);
   const dispatch = useDispatch();
-  const incrementHandler = () => {
-    dispatch(increment());
-  };
-
-  const decrementHandler = () => {
-    dispatch(decrement());
-  };
-
-  const resetHandler = () => {
-    dispatch(reset());
-  };
 
   return (
     <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
@@ -23,19 +17,19 @@ export const Counter = () => {
       <div className="flex space-x-3">
         <button
           className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-          onClick={incrementHandler}
+          onClick={() => dispatch(increment())}
         >
           Increment
         </button>
         <button
           className="bg-red-400 text-white px-3 py-2 rounded shadow"
-          onClick={decrementHandler}
+          onClick={() => dispatch(decrement())}
         >
           Decrement
         </button>
         <button
           className="bg-yellow-400 text-white px-3 py-2 rounded shadow"
-          onClick={resetHandler}
+          onClick={() => dispatch(reset())}
         >
           Reset
         </button>
