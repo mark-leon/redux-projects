@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectCount,
   decrement,
   increment,
   reset,
-  incrementByAmount,
-  decrementByAmount,
+  selectCount,
 } from "../../rtk/counter/counterSlice";
 
 export const Counter = () => {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
-  const [amount, setAmount] = useState(1);
 
   return (
-    <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5  rounded ">
+    <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5  bg-white rounded shadow ">
       <div className="text-2xl font-semibold">{count}</div>
       <div className="flex space-x-3">
         <button
@@ -29,23 +26,6 @@ export const Counter = () => {
           onClick={() => dispatch(decrement())}
         >
           Decrement
-        </button>
-        <input
-          aria-label="Set increment amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <button
-          className="bg-green-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => dispatch(incrementByAmount(Number(amount) || 0))}
-        >
-          IncrementByAmount
-        </button>
-        <button
-          className="bg-orange-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => dispatch(decrementByAmount(Number(amount) || 0))}
-        >
-          DecrementByAmount
         </button>
         <button
           className="bg-yellow-400 text-white px-3 py-2 rounded shadow"
