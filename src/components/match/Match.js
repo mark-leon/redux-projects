@@ -4,8 +4,8 @@ import { decrement, increment, removeMatch } from "../../rtk/match/matchSlice";
 
 export const Match = ({ id, count }) => {
   const dispatch = useDispatch();
-  const [incrementValue, setIncrementvalue] = useState();
-  const [decrementValue, setDecrementvalue] = useState();
+  const [incrementValue, setIncrementvalue] = useState("");
+  const [decrementValue, setDecrementvalue] = useState("");
 
   console.log(typeof incrementValue);
 
@@ -33,6 +33,7 @@ export const Match = ({ id, count }) => {
                 if (event.key === "Enter") {
                   event.preventDefault();
                   dispatch(increment({ incrementValue, id }));
+                  setIncrementvalue("");
                 }
               }}
               class="lws-increment"
@@ -49,6 +50,7 @@ export const Match = ({ id, count }) => {
                 if (event.key === "Enter") {
                   event.preventDefault();
                   dispatch(decrement({ decrementValue, id }));
+                  setDecrementvalue("");
                 }
               }}
               class="lws-decrement"

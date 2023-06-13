@@ -20,20 +20,22 @@ export const matchSlice = createSlice({
         (match) => match.id === action.payload.id
       );
       if (match) {
-        match.count = match.count + action.payload.incrementValue;
+        match.count = match.count + parseInt(action.payload.incrementValue);
       }
     },
     decrement: (state, action) => {
-      console.log(typeof action.payload.decrementValue);
       const match = state.nMatch.find(
         (match) => match.id === action.payload.id
       );
       if (match) {
-        match.count = match.count - action.payload.decrementValue;
+        match.count = match.count - parseInt(action.payload.decrementValue);
+        if (match.count < 0) {
+          match.count = 0;
+        }
       }
     },
     resetMatch: (state, action) => {
-      state.nMatch = state.nMatch.map((match) => (match.count = 0));
+      state.nMatch.map((match) => (match.count = 0));
     },
     removeMatch: (state, action) => {
       state.nMatch = state.nMatch.filter(

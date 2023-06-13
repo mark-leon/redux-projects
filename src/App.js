@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Match } from "./components/match/Match";
-import { addCounter, addMatch } from "./rtk/match/matchSlice";
+import { addMatch, resetMatch } from "./rtk/match/matchSlice";
 
 function App() {
   const matches = useSelector((state) => state.matches.nMatch);
@@ -26,7 +26,7 @@ function App() {
           <button class="btn lws-addMatch" onClick={() => dispatch(addMatch())}>
             Add Another Match
           </button>
-          <button class="lws-reset">
+          <button class="lws-reset" onClick={() => dispatch(resetMatch())}>
             <svg
               fill="none"
               width="24"
