@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counter/counterSlice";
+import matchReducer from "./match/matchSlice";
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    matches: matchReducer,
   },
 });
