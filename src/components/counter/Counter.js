@@ -1,14 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
-  decrement,
-  increment,
-  reset,
-  selectCount,
+  decrementCounter,
+  incrementCounter,
+  removeCounter,
+  resetCounter,
 } from "../../rtk/counter/counterSlice";
 
-export const Counter = () => {
-  const count = useSelector(selectCount);
+export const Counter = ({ id, count }) => {
   const dispatch = useDispatch();
 
   return (
@@ -17,21 +16,27 @@ export const Counter = () => {
       <div className="flex space-x-3">
         <button
           className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => dispatch(increment())}
+          onClick={() => dispatch(incrementCounter({ count, id }))}
         >
           Increment
         </button>
         <button
           className="bg-red-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => dispatch(decrement())}
+          onClick={() => dispatch(decrementCounter({ count, id }))}
         >
           Decrement
         </button>
         <button
           className="bg-yellow-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => dispatch(reset())}
+          onClick={() => dispatch(resetCounter({ count, id }))}
         >
           Reset
+        </button>
+        <button
+          className="bg-pink-400 text-white px-3 py-2 rounded shadow"
+          onClick={() => dispatch(removeCounter({ count, id }))}
+        >
+          Delete
         </button>
       </div>
     </div>

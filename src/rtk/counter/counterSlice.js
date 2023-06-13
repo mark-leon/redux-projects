@@ -1,32 +1,7 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// export const counterSlice = createSlice({
-//   name: "counter",
-//   initialState: {
-//     value: 0,
-//   },
-//   reducers: {
-//     increment: (state) => {
-//       state.value += 1;
-//     },
-//     decrement: (state) => {
-//       state.value -= 1;
-//     },
-//     reset: (state) => {
-//       state.value = 0;
-//     },
-//   },
-// });
-
-// export const { increment, decrement, reset } = counterSlice.actions;
-
-// export const selectCount = (state) => state.counter.value;
-
-// export default counterSlice.reducer;
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  counter: [],
+  nCounter: [{ id: 1, count: 0 }],
 };
 
 export const counterSlice = createSlice({
@@ -36,17 +11,48 @@ export const counterSlice = createSlice({
     addCounter: (state) => {
       const counter = {
         id: Math.random() * 100,
+        count: 0,
       };
-      state.counter.push(counter);
+      state.nCounter.push(counter);
+    },
+    incrementCounter: (state, action) => {
+      const counter = state.nCounter.find(
+        (counter) => counter.id === action.payload.id
+      );
+      if (counter) {
+        counter.count = counter.count + 1;
+      }
+    },
+    decrementCounter: (state, action) => {
+      const counter = state.nCounter.find(
+        (counter) => counter.id === action.payload.id
+      );
+      if (counter) {
+        counter.count = counter.count - 1;
+      }
+    },
+    resetCounter: (state, action) => {
+      const counter = state.nCounter.find(
+        (counter) => counter.id === action.payload.id
+      );
+      if (counter) {
+        counter.count = 0;
+      }
     },
     removeCounter: (state, action) => {
-      state.counter = state.counter.filter(
-        (counter) => counter.id !== action.payload
+      state.nCounter = state.nCounter.filter(
+        (counter) => counter.id !== action.payload.id
       );
     },
   },
 });
 
-export const { addCounter, removeCounter } = counterSlice.actions;
+export const {
+  addCounter,
+  removeCounter,
+  incrementCounter,
+  resetCounter,
+  decrementCounter,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
