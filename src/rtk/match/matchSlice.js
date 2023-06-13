@@ -20,15 +20,16 @@ export const matchSlice = createSlice({
         (match) => match.id === action.payload.id
       );
       if (match) {
-        match.count = match.count + action.payload.value;
+        match.count = match.count + action.payload.incrementValue;
       }
     },
     decrement: (state, action) => {
+      console.log(typeof action.payload.decrementValue);
       const match = state.nMatch.find(
         (match) => match.id === action.payload.id
       );
       if (match) {
-        match.count = match.count - action.payload.value;
+        match.count = match.count - action.payload.decrementValue;
       }
     },
     resetMatch: (state, action) => {

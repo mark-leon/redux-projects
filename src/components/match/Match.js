@@ -7,6 +7,8 @@ export const Match = ({ id, count }) => {
   const [incrementValue, setIncrementvalue] = useState();
   const [decrementValue, setDecrementvalue] = useState();
 
+  console.log(typeof incrementValue);
+
   return (
     <div class="all-matches container">
       <div class="match">
@@ -25,11 +27,12 @@ export const Match = ({ id, count }) => {
             <input
               type="number"
               name="increment"
-              onChange={(e) => setValue(e.target.value)}
+              value={incrementValue}
+              onChange={(e) => setIncrementvalue(e.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
                   event.preventDefault();
-                  dispatch(increment({ value, id }));
+                  dispatch(increment({ incrementValue, id }));
                 }
               }}
               class="lws-increment"
@@ -40,11 +43,12 @@ export const Match = ({ id, count }) => {
             <input
               type="number"
               name="decrement"
-              onChange={(e) => setValue(e.target.value)}
+              value={decrementValue}
+              onChange={(e) => setDecrementvalue(e.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
                   event.preventDefault();
-                  dispatch(decrement({ value, id }));
+                  dispatch(decrement({ decrementValue, id }));
                 }
               }}
               class="lws-decrement"
