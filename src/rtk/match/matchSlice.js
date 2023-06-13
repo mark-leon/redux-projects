@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   nMatch: [{ id: 1, count: 0 }],
+  total: 0,
 };
 
 export const matchSlice = createSlice({
@@ -34,7 +35,7 @@ export const matchSlice = createSlice({
         }
       }
     },
-    resetMatch: (state, action) => {
+    resetMatch: (state) => {
       state.nMatch.map((match) => (match.count = 0));
     },
     removeMatch: (state, action) => {

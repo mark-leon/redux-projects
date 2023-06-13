@@ -4,7 +4,10 @@ import { addMatch, resetMatch } from "./rtk/match/matchSlice";
 
 function App() {
   const matches = useSelector((state) => state.matches.nMatch);
-  console.log(matches);
+  const total = matches.reduce((sum, match) => {
+    return sum + match.count;
+  }, 0);
+
   const dispatch = useDispatch();
   return (
     <div>
@@ -14,7 +17,7 @@ function App() {
             <div class="header-wrapper">
               <img src="./image/lws-logo 1.svg" alt="logo" class="logo" />
               <h1 class="name">Scoreboard</h1>
-              <h5 class="total">Total</h5>
+              <h5 class="total">{total}</h5>
             </div>
           </div>
         </header>

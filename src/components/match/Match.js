@@ -7,8 +7,6 @@ export const Match = ({ id, count }) => {
   const [incrementValue, setIncrementvalue] = useState("");
   const [decrementValue, setDecrementvalue] = useState("");
 
-  console.log(typeof incrementValue);
-
   return (
     <div class="all-matches container">
       <div class="match">
