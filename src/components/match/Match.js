@@ -4,7 +4,8 @@ import { decrement, increment, removeMatch } from "../../rtk/match/matchSlice";
 
 export const Match = ({ id, count }) => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState();
+  const [incrementValue, setIncrementvalue] = useState();
+  const [decrementValue, setDecrementvalue] = useState();
 
   return (
     <div class="all-matches container">
@@ -39,6 +40,7 @@ export const Match = ({ id, count }) => {
             <input
               type="number"
               name="decrement"
+              onChange={(e) => setValue(e.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
                   event.preventDefault();
