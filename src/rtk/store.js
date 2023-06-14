@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import matchReducer from "./match/matchSlice";
+import flightReducer from "./flight/flightSlice";
 
 export default configureStore({
   reducer: {
-    matches: matchReducer,
+    flight: flightReducer,
   },
 });
