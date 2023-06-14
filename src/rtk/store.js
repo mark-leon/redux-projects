@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import flightReducer from "./flight/flightSlice";
+import productReducer from "./product/productSlice";
 
 export default configureStore({
   reducer: {
-    flight: flightReducer,
+    product: productReducer,
   },
 });
