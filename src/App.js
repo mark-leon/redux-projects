@@ -10,6 +10,14 @@ function App() {
   const [guest, setGuest] = useState("");
   const [flightClass, setFlightClass] = useState("");
 
+  const clearState = () => {
+    setDestinationFrom("");
+    setDestinationTo("");
+    setFlightClass("");
+    setDate("");
+    setGuest("");
+  };
+
   const dispatch = useDispatch();
   return (
     <div>
@@ -151,6 +159,7 @@ function App() {
                       flightClass,
                     })
                   );
+                  clearState();
                 }}
               >
                 <svg
