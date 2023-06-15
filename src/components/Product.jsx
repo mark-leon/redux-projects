@@ -1,16 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addproduct } from "../rtk/product/productSlice";
 
-export const Product = (product) => {
-  console.log(product);
+export const Product = ({ product }) => {
+  const { id, name, quantity, price } = product;
+  const dispatch = useDispatch();
   return (
     <div class="bg-white py-4 px-4 shadow-md rounded-lg my-4 mx-4">
       <div class="flex justify-between px-4 items-center">
         <div class="text-lg font-semibold">
-          <p>{/* {product.name} {product.quantity} */}</p>
-          {/* <p class="text-gray-400 text-base">Tk {product.price}</p> */}
+          <p>
+            {name} {quantity}
+          </p>
+          <p class="text-gray-400 text-base">Tk {price}</p>
         </div>
         <div class="text-lg font-semibold">
-          <button class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center">
+          <button
+            class="focus:outline-none bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-2 rounded-full inline-flex items-center"
+            onClick={() => quantity > 0 && dispatch(addproduct(id))}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
