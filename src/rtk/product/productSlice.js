@@ -1,29 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products: [
-    {
-      id: 1,
-      name: "Asus Vivobook X515MA",
-      quantity: 20,
-      price: 35500,
-      count: 0,
-    },
-    {
-      id: 2,
-      name: "Dell E1916HV 18.5 Inch",
-      quantity: 35,
-      price: 9300,
-      count: 0,
-    },
-    {
-      id: 3,
-      name: "Canon Eos 4000D 18MP",
-      quantity: 72,
-      price: 36500,
-      count: 0,
-    },
-  ],
+  // products: [
+  //   {
+  //     id: 1,
+  //     name: "Asus Vivobook X515MA",
+  //     quantity: 20,
+  //     price: 35500,
+  //     count: 0,
+  //   },
+  // ],
+  products: [],
   totalItem: 0,
   totalPrice: 0,
 };
@@ -31,7 +18,18 @@ export const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    addproduct: (state, action) => {
+    addProduct: (state, action) => {
+      const product = {
+        id: Math.floor(Math.random() * 100),
+        url: action.payload.url,
+        name: action.payload.name,
+        category: action.payload.category,
+        amount: parseInt(action.payload.amount),
+        quantity: parseInt(action.payload.quantity),
+      };
+      state.products.push(product);
+    },
+    addToCart: (state, action) => {
       const product = state.products.find(
         (product) => product.id === action.payload
       );
@@ -53,6 +51,6 @@ export const productSlice = createSlice({
   },
 });
 
-export const { addproduct, removeproduct } = productSlice.actions;
+export const { addToCart, removeproduct, addProduct } = productSlice.actions;
 
 export default productSlice.reducer;
