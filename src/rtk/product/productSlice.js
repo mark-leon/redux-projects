@@ -10,7 +10,13 @@ const initialState = {
   //     count: 0,
   //   },
   // ],
-  products: [],
+  products: [
+    {
+      id: 9.3,
+      url: "https://i.dummyjson.com/data/products/59/thumbnail.jpg",
+      name: "Spring and summershoes",
+    },
+  ],
   totalItem: 0,
   totalPrice: 0,
 };

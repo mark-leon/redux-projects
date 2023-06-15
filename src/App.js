@@ -8,7 +8,6 @@ import { Cart } from "./pages/cart/Cart";
 import { Product } from "./pages/product/Product";
 
 function App() {
-  const products = useSelector((state) => state.product.products);
   const totalItem = useSelector((state) => state.product.totalItem);
   const totalPrice = useSelector((state) => state.product.totalPrice);
   const dispatch = useDispatch();
