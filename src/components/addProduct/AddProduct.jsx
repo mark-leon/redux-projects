@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { addProduct } from "../../rtk/product/productSlice";
+import { useDispatch } from "react-redux";
 
 export const AddProduct = () => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [url, setUrl] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const clearState = () => {
+    setName("");
+    setCategory("");
+    setPrice("");
+    setQuantity("");
+    setUrl("");
+  };
   return (
     <div>
       <div class="formContainer">
@@ -13,6 +28,7 @@ export const AddProduct = () => {
               id="lws-inputName"
               type="text"
               required
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
@@ -23,6 +39,7 @@ export const AddProduct = () => {
               id="lws-inputCategory"
               type="text"
               required
+              onChange={(e) => setCategory(e.target.value)}
             />
           </div>
 
@@ -33,6 +50,7 @@ export const AddProduct = () => {
               id="lws-inputImage"
               type="text"
               required
+              onChange={(e) => setUrl(e.target.value)}
             />
           </div>
 
@@ -44,6 +62,7 @@ export const AddProduct = () => {
                 type="number"
                 id="lws-inputPrice"
                 required
+                onChange={(e) => setPrice(e.target.value)}
               />
             </div>
 
@@ -54,11 +73,22 @@ export const AddProduct = () => {
                 type="number"
                 id="lws-inputQuantity"
                 required
+                onChange={(e) => setQuantity(e.target.value)}
               />
             </div>
           </div>
 
-          <button type="submit" id="lws-inputSubmit" class="submit">
+          <button
+            type="submit"
+            id="lws-inputSubmit"
+            disabled={!name || !url || !category || !price || !quantity}
+            class="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(addProduct({ name, url, category, price, quantity }));
+              clearState();
+            }}
+          >
             Add Product
           </button>
         </form>

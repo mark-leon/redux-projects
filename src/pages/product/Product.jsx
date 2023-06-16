@@ -11,9 +11,11 @@ export const Product = () => {
       <Navbar />
       <main class="py-16">
         <div class="productWrapper">
-          {products.map((product) => {
-            return <ProductList product={product} />;
-          })}
+          <div class="productContainer" id="lws-productContainer">
+            {products.map((product) => {
+              return <ProductList product={product} />;
+            })}
+          </div>
           <AddProduct />
         </div>
       </main>
